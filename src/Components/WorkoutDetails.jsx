@@ -15,7 +15,7 @@ function WorkoutDetails({ workout }) {
           return
         }
 
-        const response = await axios.delete('/api/workouts/' + workout._id, {
+        const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/workouts/`+ workout._id, {
           headers:{
             'Authorization' : `Bearer ${user.token}`
           }

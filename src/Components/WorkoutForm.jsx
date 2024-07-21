@@ -24,7 +24,7 @@ function WorkoutForm() {
 
     const workout = { title, load, reps };
 
-    axios.post('/api/workouts',workout,{
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/workouts`,workout,{
       headers:{
         'Authorization' : `Bearer ${user.token}`
       }
