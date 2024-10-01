@@ -18,24 +18,23 @@ export const useLogin = () => {
     await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/user/login`,signUpFormdata)
       .then((response) => {
         const response_data = response.data;
-
-        if (response.status === 200) {
-          setIsLoading(false);
-          setError(response_data.error);
-        }
-
+    
         if (response.status === 200) {
           // save the user to local storage
           localStorage.setItem("user", JSON.stringify(response_data));
 
-          // update the auth context
+          // Notify the user of successful login
           toast.success("Login Succesfully")
+
+          // Update the auth context
           dispatch({ type: "LOGIN", payload: response_data });
+          
           setIsLoading(false);
         }
       })
       .catch((err) => {
-        setError(err.response.data.error);
+        setError(err.response.data.message);
+        setIsLoading(false);
       });
   };
   return { login, isLoading, error };

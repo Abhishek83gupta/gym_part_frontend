@@ -14,8 +14,8 @@ function Signup() {
     e.preventDefault();
    
    await signup(email, password)
-  //  setEmail('')
-  //  setPassword('')
+   setEmail('')
+   setPassword('')
   };
 
   return ( !user ? 
